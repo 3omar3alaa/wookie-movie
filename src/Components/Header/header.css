@@ -1,0 +1,13 @@
+h3:hover{
+    cursor: pointer;
+    color: #bebebe;
+}
+
+h3{
+    width: fit-content;
+    height: inherit;
+}
+
+.fav{
+    display: flex;
+}

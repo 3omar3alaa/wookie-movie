@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { makeStyles, Grid, Button } from '@material-ui/core';
 import Moment from 'moment';
 import Header from '../Header/header';
+import { AddFavourites } from "../Favourites/FavouritesService";
 
 const useStyles = makeStyles((theme) => ({
     backdrop: {
@@ -38,9 +39,6 @@ const MovieDetail = (props) => {
     const classes = useStyles()
     const location = useLocation();
     const movie = location.state;
-    if (movie === null) {
-        console.log("here");
-    }
 
     return (
         <div className="container-fluid movie-app">
@@ -53,7 +51,7 @@ const MovieDetail = (props) => {
                     <Grid item xs={8}>
                         <p className={classes.title}>{movie.title}</p>
                         <div className="flex justify-center mt-40">
-                            <Button className={classes.favourites} variant="contained">Add To Favourites</Button>
+                            <Button className={classes.favourites} onClick={(() => AddFavourites(movie))} variant="contained">Add To Favourites</Button>
                         </div>
                         <p>Rating: {movie.imdb_rating}</p>
                         <p>Release: {Moment(movie.released_on).format('DD-MM-YYYY')}</p>

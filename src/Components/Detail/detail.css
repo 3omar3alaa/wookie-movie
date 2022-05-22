@@ -1,0 +1,29 @@
+.backdrop {
+    background-size: 'cover';
+    height: '100vh';
+    font-size: 20;
+}
+
+.detail {
+    color: '#fff';
+    max-width: 1240;
+    width: '100%';
+    padding-top: '10em';
+    padding-right: 15;
+    padding-left: 15;
+    margin-right: 'auto';
+    margin-left: 'auto';
+}
+
+.title {
+    font-size: '2.5em';
+    margin-bottom: '2em';
+}
+
+.poster > img{
+    margin: 100;
+}
+
+.overview {
+    margin-top: '2.5em';
+}

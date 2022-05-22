@@ -11,17 +11,7 @@ const MovieList = (props) => {
             moviesByGenre[genre].push(movie)
         })
     });
-
-    console.log(moviesByGenre);
     return (
-        // <>
-        //     {props.movies.map((movie, index) => (
-        //         <div className="image-container d-flex justify-content-start m-3">
-        //             <img src={movie.poster} alt="movie"></img>
-        //         </div>
-        //     ))}
-        // </>
-
         <>
             {(Object.entries(moviesByGenre) || []).map(([Genre, Movies]) => {
                 return (

@@ -15,7 +15,7 @@ const GetFavourites = () => {
 }
 
 const AddFavourites = (movie) => {
-	let movieFavouritesList = getFromLocalStorage('movie-favourites');
+	let movieFavouritesList = getFromLocalStorage(FAVOURITES_NAME);
 	let movieExists = movieFavouritesList.filter(x => x.id === movie.id);
 	if (movieExists.length === 0) {
 		const newFavouriteList = [...movieFavouritesList, movie];
@@ -25,11 +25,17 @@ const AddFavourites = (movie) => {
 
 
 const RemoveFavourites = (movie) => {
-	let movieFavouritesList = getFromLocalStorage('movie-favourites');
+	let movieFavouritesList = getFromLocalStorage(FAVOURITES_NAME);
 	const newFavouriteList = movieFavouritesList.filter(
 		(favourite) => favourite.id !== movie.id
 	);
 	saveToLocalStorage(newFavouriteList);
 };
 
-export { GetFavourites, AddFavourites, RemoveFavourites };
+const IsFavourite = (movie) => {
+	const movieFavouritesList = getFromLocalStorage(FAVOURITES_NAME);
+	let movieExists = movieFavouritesList.filter(x => x.id === movie.id);
+	if (movieExists.length === 0) return false;
+	return true;
+}
+export { GetFavourites, AddFavourites, RemoveFavourites, IsFavourite };

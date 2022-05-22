@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { makeStyles, Grid, Button } from '@material-ui/core';
 import Moment from 'moment';
 import Header from '../Header/header';
-import { AddFavourites } from "../Favourites/FavouritesService";
+import { AddFavourites, IsFavourite } from "../Favourites/FavouritesService";
 
 const useStyles = makeStyles((theme) => ({
     backdrop: {
@@ -39,6 +39,22 @@ const MovieDetail = (props) => {
     const classes = useStyles()
     const location = useLocation();
     const movie = location.state;
+    const FavButtonText = "Add To Favourites"
+    const [buttonText, setButtonText] = useState(FavButtonText);
+    const [buttonDisableState, setButtonDisableState] = useState(false);
+
+    useEffect(() => {
+        if(IsFavourite(movie)){
+            setButtonText("Added To Favourites");
+            setButtonDisableState(true);
+        }
+      }, []);
+
+    const AddFavouritesLocal = (movie) => {
+        AddFavourites(movie);
+        setButtonText("Added To Favourites");
+        setButtonDisableState(true);
+    }
 
     return (
         <div className="container-fluid movie-app">
@@ -51,7 +67,7 @@ const MovieDetail = (props) => {
                     <Grid item xs={8}>
                         <p className={classes.title}>{movie.title}</p>
                         <div className="flex justify-center mt-40">
-                            <Button className={classes.favourites} onClick={(() => AddFavourites(movie))} variant="contained">Add To Favourites</Button>
+                            <Button className={classes.favourites} onClick={(() => AddFavouritesLocal(movie))} disabled={buttonDisableState} variant="outlined">{buttonText}</Button>
                         </div>
                         <p>Rating: {movie.imdb_rating}</p>
                         <p>Release: {Moment(movie.released_on).format('DD-MM-YYYY')}</p>

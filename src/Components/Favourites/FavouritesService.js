@@ -1,22 +1,3 @@
-// import { useState } from 'react';
-
-// function useFavouritesService(movie, method) {
-// 	const [favourites, setFavourites] = useState([]);
-// 	if(method === 'ADD'){
-// 		const newFavouriteList = [...favourites, movie];
-// 		setFavourites(newFavouriteList);
-// 		saveToLocalStorage(newFavouriteList);
-// 	}
-// 	else {
-// 		const newFavouriteList = favourites.filter(
-// 			(favourite) => favourite.imdbID !== movie.imdbID
-// 		);
-// 		setFavourites(newFavouriteList);
-// 		saveToLocalStorage(newFavouriteList);
-// 	}
-// 	return favourites;
-// }
-
 const FAVOURITES_NAME = 'movie-favourites';
 
 const saveToLocalStorage = (items) => {
@@ -46,7 +27,7 @@ const AddFavourites = (movie) => {
 const RemoveFavourites = (movie) => {
 	let movieFavouritesList = getFromLocalStorage('movie-favourites');
 	const newFavouriteList = movieFavouritesList.filter(
-		(favourite) => favourite.imdbID !== movie.imdbID
+		(favourite) => favourite.id !== movie.id
 	);
 	saveToLocalStorage(newFavouriteList);
 };

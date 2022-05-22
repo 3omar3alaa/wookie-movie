@@ -17,7 +17,7 @@ const MovieList = (props) => {
                 return (
                     <div>
                         <h1>{Genre}</h1>
-                        <div className="row movie-row">
+                        <div className="row movie-row scroll-horizontal-row">
                             {(Object.entries(Movies).map(([key, movie]) => {
                                 return (
                                     <div className="image-container d-flex justify-content-start m-3">

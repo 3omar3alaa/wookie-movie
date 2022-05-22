@@ -9,9 +9,12 @@ body {
 	white-space: nowrap;
 }
 
+.scroll-horizontal-row{
+	flex-wrap: nowrap;
+}
+
 .movie-row {
 	overflow-x: auto;
-	flex-wrap: nowrap;
 	overflow-y: hidden;
 	height: max-content;
 	-ms-overflow-style: none; /* for Internet Explorer, Edge */
@@ -57,4 +60,5 @@ body {
 	font-size: 20px;
 	padding: 20px;
 	text-align: center;
+	color: #ffffff;
 }

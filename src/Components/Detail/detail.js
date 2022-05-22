@@ -1,18 +1,14 @@
-import './detail.css';
 import React from "react";
-
 import { useLocation } from "react-router-dom";
 import { makeStyles, Grid, Button } from '@material-ui/core';
 import Moment from 'moment';
 import Header from '../Header/header';
 
-
-
 const useStyles = makeStyles((theme) => ({
     backdrop: {
         backgroundSize: 'cover',
-        height: '100vh',
-        fontSize: 20
+        fontSize: 20,
+        height: '90vh'
     },
     detail: {
         color: '#fff',
@@ -31,8 +27,10 @@ const useStyles = makeStyles((theme) => ({
     overview: {
         marginTop: '2.5em'
     },
-    favourites:{
-        marginBottom:'1%'
+    favourites: {
+        marginBottom: '1%',
+        color: 'black',
+        backgroundColor: '#ffffff'
     }
 }));
 
@@ -45,7 +43,7 @@ const MovieDetail = (props) => {
     }
 
     return (
-        <>
+        <div className="container-fluid movie-app">
             <Header header='Wookie Movies' />
             <div className={classes.backdrop} style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.6) 100%), url(${movie.backdrop})` }}>
                 <Grid container className={classes.detail} spacing={3} >
@@ -55,7 +53,7 @@ const MovieDetail = (props) => {
                     <Grid item xs={8}>
                         <p className={classes.title}>{movie.title}</p>
                         <div className="flex justify-center mt-40">
-                            <Button className={classes.favourites} variant="contained" color="primary">Add To Favourites</Button>
+                            <Button className={classes.favourites} variant="contained">Add To Favourites</Button>
                         </div>
                         <p>Rating: {movie.imdb_rating}</p>
                         <p>Release: {Moment(movie.released_on).format('DD-MM-YYYY')}</p>
@@ -68,7 +66,7 @@ const MovieDetail = (props) => {
                     </Grid>
                 </Grid>
             </div>
-        </>
+        </div>
     );
 }
 

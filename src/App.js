@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import MovieList from './Components/Home/home';
 import Header from './Components/Header/header';
-import MovieSearch from './Components/Search/search';
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -15,8 +14,8 @@ function App() {
       headers: {
         'Authorization': 'Bearer Wookie2019'
       },
-      params:{
-        q : searchValue
+      params: {
+        q: searchValue
       }
     }).then((response) => {
       setMovies(response['data']['movies']);
@@ -29,10 +28,7 @@ function App() {
 
   return (
     <div className='container-fluid movie-app'>
-      <div className='row header d-flex align-items-center mb-4'>
-        <Header header='Wookie Movies' />
-        <MovieSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
-      </div>
+      <Header header='Wookie Movies' searchValue={searchValue} setSearchValue={setSearchValue} />
       <MovieList movies={movies} />
     </div>
   );

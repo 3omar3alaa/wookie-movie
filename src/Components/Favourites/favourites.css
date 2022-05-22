@@ -1,3 +1,4 @@
 .remove-fav:hover{
     color: tomato;
+    width: inherit;
 }

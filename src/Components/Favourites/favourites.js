@@ -34,7 +34,7 @@ const Favourites = () => {
                                         className='overlay d-flex align-items-center justify-content-center'
                                     >
                                         <div className='remove-fav'>
-                                            <span className='mr-2'>Remove from favourites</span>
+                                            <span className='mr-2'>Remove From Favourites</span>
                                         </div>
                                     </div>
                                 </div>

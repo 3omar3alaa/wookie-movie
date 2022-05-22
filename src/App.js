@@ -4,26 +4,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import MovieList from './Components/Home/home';
 import Header from './Components/Header/header';
+import getMoviesService from './Core/ApiService';
 
 function App() {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState('');
 
-  const getMovies = async (searchValue) => {
-    axios.get('https://wookie.codesubmit.io/movies', {
-      headers: {
-        'Authorization': 'Bearer Wookie2019'
-      },
-      params: {
-        q: searchValue
-      }
-    }).then((response) => {
-      setMovies(response['data']['movies']);
-    })
-  };
-
   useEffect(() => {
-    getMovies(searchValue);
+    getMoviesService(searchValue).then(response => {
+      setMovies(response['data']['movies']);
+    });
   }, [searchValue]);
 
   return (
